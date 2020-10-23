@@ -1,79 +1,70 @@
 <!DOCTYPE html>
 <html lang=">" dir="ltr">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Tytuł Strony </title>
+  <title> Lissajour Curve </title>
+  <script type="text/javascript" src="./Curve.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.2.2/d3.min.js"></script>
+  <link type="text/css" href='style.css' rel='stylesheet'>
 
 </head>
 
-<body onload="init()">
-<h1>Lissajous Curve</h1>
+<body>
 
-<input> </input>
-<input> </input>
-<input> </input>
+<div class="plotAndIntro">
+  <div class="intro">
+  <h1>Lissajour Curve</h1>
+  <h2>We work on equations:</h2>
+  <h3> x = A sin(at + phase)</h3>
+  <h3> y = B sin(bt)</h3>
+  <h2>Try by yourself and Enjoy!</h2>
+</div>
 
-</br>
+  <div class="plotDiv">
+    <svg id="canvas" class="d-block"></svg>
+  </div>
+</div>
+  <form class="sliderDiv">
+    <div>
+      <input type="range"  class="slider A-slider" min="100" max="200" value="100">
+      </br>
+      <label>A = </label>
+      <label id="A-label" for="A-slider"></label>
+    </div>
+  
 
-<canvas id="canvas" width="800" height="600" style="border:1px solid #000000;">
-</canvas>
+    <div>
+      <input type="range" class="slider B-slider" min="100" max="200" value="100">
+      </br>
+      <label>B = </label>
+      <label id="B-label" for="B-slider"> </label>
+    </div>
+
+    <div>
+      <input type="range" class="slider a-slider" min="1" max="10" value="1">
+      </br>
+      <label>a = </label>
+      <label id="a-label" for="a-slider"></label>
+    </div>
+
+    <div>
+      <input type="range" class="slider b-slider" min="1" max="10" value="1">
+      </br>
+      <label>b = </label>
+      <label id="b-label" for="b-slider"></label>
+    </div>
+
+    <div>
+      <input type="range" class="slider phase-slider" min="1" max="4" value="1">
+      </br>
+      <label>Phase = </label>
+      <label id="phase-label" for="phase-slider"></label>
+    </div>
+  </form>
+
 
 
 
 </body>
-</html>
-
-<script>
-
-var canvas ;
-var context ;
-var Val_max;
-var Val_min;
-var sections;
-var xScale;
-var yScale;
-		// Values for the Data Plot, they can also be obtained from a external file
-var data =  [100, 102, 87, , 100, 123, 100, 90, 87, 91, 93, 88];
-
-
-function init() {
-		// set these values for your data
-	sections = 12;
-	Val_max = 130;
-	Val_min = -40;
-	var columnSize = 50;
-	var rowSize = 50;
-	var margin = 10;
-
-		//
-
-	canvas = document.getElementById("canvas");
-	context = canvas.getContext("2d");
-	context.fillStyle = "#0099ff"
-	context.font = "20 pt Verdana"
-
-	yScale = (canvas.height - columnSize - margin) / (Val_max - Val_min);
-	xScale = (canvas.width - rowSize) / sections;
-
-
-
-	context.translate(rowSize,canvas.height + Val_min * yScale);
-	context.scale(1,-1 * yScale);
-
-
-
-	context.strokeStyle="#FF0066";
-	plotData(data);
-
-}
-
-function plotData(dataSet) {
-	context.beginPath();
-	context.moveTo(0, dataSet[0]);
-	for (i=1;i<sections;i++) {
-		context.lineTo(i * xScale, dataSet[i]);
-	}
-	context.stroke();
-}
-</script>

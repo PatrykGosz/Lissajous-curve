@@ -1,0 +1,51 @@
+body{
+    background-image: url(./background.svg) ; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; 
+    background-attachment: fixed;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+
+h1 ,h2, h3 {
+    text-align: center;
+    text-decoration-color: aqua;
+}
+
+
+.plotDiv {
+    text-align: center;
+}
+
+.sliderDiv {
+    text-align: center;
+}
+
+.slider {
+   
+    width: 40%;
+    height: 10px;
+    border-radius: 5px;  
+    outline: none;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+  label{
+      font-weight: bold;
+  }
+
+  .intro{
+      padding-top: 50px;
+  }
+
+  .plotAndIntro {
+      display: flex;
+      justify-content: center;
+  }
